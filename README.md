@@ -15,10 +15,10 @@ Data loading, preprocessing, feature generation, model training, validation, tes
 inference, post-processing and submission writing. The approaches that were considered
 and not adopted are evaluated in the notebook, Sections 7d and 9b.
 
-The notebook and `src/` contain the same model by design. The notebook does not import
-`src/`; it reimplements the pipeline from its own helpers and then compares. A match is
-therefore evidence that the documented reasoning describes the code that produced the
-submission, which it could not be if the notebook simply called into it.
+**3. Final Submission / and all prediction files**
+Contained in outputs/submissions. Then, our final (highest) score is 0.99167 with filenames of submission_pf_loop.csv and submission_final.csv. 
+All files were pushed to github before 11.59 p.m. and we pushed them all at once including the renamed final file of submission_final.csv
+We determined our final file before we pushed the rest of the file, and therefore was pushed earlier to secure.
 
 ## Declarations
 
