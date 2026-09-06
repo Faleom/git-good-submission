@@ -20,6 +20,53 @@ The notebook and `src/` contain the same model by design. The notebook does not 
 therefore evidence that the documented reasoning describes the code that produced the
 submission, which it could not be if the notebook simply called into it.
 
+## Declarations
+
+### AI tools and coding agents used
+
+This project was developed with **Claude (Anthropic), used through Claude Code** as an
+interactive coding agent, working under the team's direction throughout.
+
+Its involvement was substantial and covered: exploratory analysis of the data, writing and
+iterating the modelling pipeline in `src/`, building the rolling-origin validation harness,
+running the experiments recorded in the notebook, evaluating the approaches that were
+considered and rejected, and drafting the documentation in this bundle, including the
+notebook's written commentary.
+
+The team set the objectives, chose which directions to pursue, decided what to adopt and
+what to withdraw, and reviewed the output. No result in this bundle is reported without a
+computation behind it: every number in the notebook is produced by a cell in that notebook,
+and the model itself is reproducible from `train.csv` and `test.csv` by two independent
+implementations, which is why both are included.
+
+No other AI service, AutoML system or pretrained model was used. The pipeline is built
+entirely from scikit-learn primitives listed in `requirements.txt`.
+
+### Manual modification and post-processing of predictions
+
+**None was applied to the submitted predictions.** The contents of
+`outputs/submissions/submission_final.csv` are the plain `argmax` of the model's averaged
+class posterior. No row was edited by hand at any stage, no prediction was overridden, and
+no rule was applied to the output after the model produced it.
+
+In particular, no class-balance constraint, prior correction or assignment step is applied.
+Nothing in the pipeline is told how many rows of each gas the test set contains, and no such
+count is assumed anywhere. The predicted class counts printed when the model runs are a
+result of the model, not a target imposed on it.
+
+Two operations that do count as post-processing occur **inside the fitting loop**, not on
+the output, and both are deterministic and part of the model rather than a manual step:
+
+1. **Seed selection.** Each self-training round refits on the most confident rows per
+   predicted class, capped at the 60th-percentile value among the model's own six current
+   predicted counts, recomputed every round from its own output.
+2. **Relabelling.** The whole test set is relabelled from the averaged posterior each round.
+
+Both are described in `MODEL.md` and implemented in `src/final_model.py`.
+
+The pipeline sets no random seed and needs none, so re-running it reproduces the submitted
+file byte for byte rather than approximately.
+
 ## Reproduce
 
 ```bash
