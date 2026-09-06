@@ -33,7 +33,7 @@ computation behind it: every number in the notebook is produced by a cell in tha
 and the model itself is reproducible from `train.csv` and `test.csv` by two independent
 implementations, which is why both are included.
 
-No other AI service, AutoML system or pretrained model was used. The pipeline is built
+No other external dataset, external code, additional information, AI service, AutoML system or pretrained model was used. The pipeline is built
 entirely from scikit-learn primitives listed in `requirements.txt`.
 
 ### Manual modification and post-processing of predictions
