@@ -27,12 +27,6 @@ submission, which it could not be if the notebook simply called into it.
 This project was developed with **Claude (Anthropic), used through Claude Code** as an
 interactive coding agent, working under the team's direction throughout.
 
-Its involvement was substantial and covered: exploratory analysis of the data, writing and
-iterating the modelling pipeline in `src/`, building the rolling-origin validation harness,
-running the experiments recorded in the notebook, evaluating the approaches that were
-considered and rejected, and drafting the documentation in this bundle, including the
-notebook's written commentary.
-
 The team set the objectives, chose which directions to pursue, decided what to adopt and
 what to withdraw, and reviewed the output. No result in this bundle is reported without a
 computation behind it: every number in the notebook is produced by a cell in that notebook,
